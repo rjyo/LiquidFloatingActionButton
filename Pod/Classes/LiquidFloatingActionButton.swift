@@ -426,13 +426,13 @@ class CircleLiquidBaseView : ActionBarBaseView {
         case .Down:
             return CGPoint(x: 0, y: distance)
 		case .FanUp:
-			let totalSpread = (CGFloat(self.openingCells.count) * cellLength + cellLength) * adjustedRatio
-			let totalRise = cellLength * 0.75 * adjustedRatio
+			let totalSpread = (CGFloat(self.openingCells.count) * cellLength + cellLength * 0.5) * adjustedRatio
+			let totalRise = cellLength * 0.5 * adjustedRatio
 			let count: CGFloat = CGFloat(self.openingCells.count)
 			let countLessOne: CGFloat = count > 1.0 ? count - 1.0 : 1.0
 			let fanX = totalSpread * CGFloat(i) / countLessOne - totalSpread / 2.0
 			let distanceFromCenter = totalRise / (count - (count + 1.0) / 2.0) * (CGFloat(i) + 1.0 - (count + 1.0) / 2.0)
-			let fanY = (cellLength * 1.5 + totalRise - abs(distanceFromCenter)) * adjustedRatio
+			let fanY = (cellLength * 1.2 + totalRise - abs(distanceFromCenter)) * adjustedRatio
 			return CGPoint(x: -fanX, y: -fanY)
 		}
     }
