@@ -18,10 +18,21 @@ func withBezier(f: (UIBezierPath) -> ()) -> UIBezierPath {
 
 extension CALayer {
     func appendShadow() {
-        shadowColor = UIColor.blackColor().CGColor
-        shadowRadius = 2.0
-        shadowOpacity = 0.1
-        shadowOffset = CGSize(width: 4, height: 4)
+		shadowColor = UIColor.blackColor().CGColor
+		shadowOffset = CGSize(width: 0, height: 2)
+		let shadowAnim = CABasicAnimation(keyPath: "shadowOpacity")
+		shadowAnim.fromValue = NSNumber(float:0.0)
+		shadowAnim.toValue = NSNumber(float:0.3)
+		let radAnim = CABasicAnimation(keyPath: "shadowRadius")
+		radAnim.fromValue = NSNumber(float:0.0)
+		radAnim.toValue = NSNumber(float:3.0)
+		let animGroup = CAAnimationGroup()
+		animGroup.animations = [shadowAnim, radAnim]
+		animGroup.duration = 0.2
+		self.addAnimation(animGroup, forKey:"shadow")
+        shadowOpacity = 0.3
+		shadowRadius = 3.0
+		shadowPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: self.bounds.width * 0.5).CGPath
         masksToBounds = false
     }
     

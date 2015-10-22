@@ -440,7 +440,7 @@ class CircleLiquidBaseView : ActionBarBaseView {
     func stop() {
         for cell in openingCells {
             if enableShadow {
-                cell.layer.appendShadow()
+				cell.layer.appendShadow()
             }
         }
         openingCells = []
