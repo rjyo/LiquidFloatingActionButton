@@ -371,7 +371,7 @@ class CircleLiquidBaseView : ActionBarBaseView {
 
 		if opening {
 			delay = 0.0
-			duration = 0.6
+			duration = 0.3
 		}
 		
         let maxDuration = duration + CGFloat(openingCells.count) * CGFloat(delay)
