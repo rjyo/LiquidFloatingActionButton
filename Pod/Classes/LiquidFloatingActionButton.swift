@@ -18,6 +18,7 @@ import QuartzCore
 @objc public protocol LiquidFloatingActionButtonDelegate {
     // selected method
     optional func liquidFloatingActionButton(liquidFloatingActionButton: LiquidFloatingActionButton, didSelectItemAtIndex index: Int)
+	optional func liquidFloatingActionButton(liquidFloatingActionButton: LiquidFloatingActionButton, didRespondToTouchAndIsOpen: Bool)
 }
 
 public enum LiquidFloatingActionButtonAnimateStyle : Int {
@@ -115,6 +116,7 @@ public class LiquidFloatingActionButton : UIView {
 
         self.baseView.open(cells)
         setNeedsDisplay()
+		self.delegate?.liquidFloatingActionButton?(self, didRespondToTouchAndIsOpen: true)
     }
 
     // close all cells
@@ -125,6 +127,7 @@ public class LiquidFloatingActionButton : UIView {
     
         self.baseView.close(cellArray())
         setNeedsDisplay()
+		self.delegate?.liquidFloatingActionButton?(self, didRespondToTouchAndIsOpen: false)
     }
 
     // MARK: draw icon
